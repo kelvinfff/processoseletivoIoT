@@ -1,350 +1,105 @@
-# Processo Seletivo – Intensivo Maker | IoT
+# Contador de Producao Nao-Intrusivo
 
-## Etapa Prática – Sistemas Embarcados
+## Identificacao do Candidato
 
-Bem-vindo(a) à **etapa prática do processo seletivo para o Intensivo Maker | IoT**.
+- **Nome completo:** Kelvin Oliveira Fernandes
+- **GitHub:** github.com/kelvinfff
 
-Esta atividade tem como objetivo avaliar suas competências em **Sistemas Embarcados**, com foco em **organização de projeto, lógica de firmware e simulação de hardware**, a partir da aplicação prática dos conhecimentos adquiridos nos cursos EAD da etapa anterior.
+## Visao Geral da Solucao
 
-> **Objetivo principal**  
-> Avaliar sua capacidade de **planejar, estruturar e desenvolver** uma solução funcional de sistemas embarcados, seguindo boas práticas de engenharia.
+O projeto implementa um contador de producao industrial nao-intrusivo utilizando um sensor optico LDR. O sistema detecta a passagem de objetos em uma esteira transportadora pela interrupcao do feixe de luz, contabiliza cada peca e monitora micro-paradas (obstrucao prolongada do sensor). Um botao fisico permite resetar o turno de trabalho.
 
----
-
-## Antes de Tudo
-
-Se você **nunca utilizou Git ou GitHub**, não se preocupe.  
-Siga atentamente os passos abaixo.
-
----
-
-### 1 - Criação de Conta no GitHub
-
-1. Acesse: <https://github.com>
-2. Clique em **Sign up**
-3. Crie sua conta gratuita seguindo as instruções da plataforma
-
-> O GitHub será utilizado para:
->
-> - Envio do seu projeto
-> - Versionamento do código
-> - Correção e validação automática via GitHub Actions
-
----
-
-### 2 - Instalação do Git
-
-O **Git** é a ferramenta responsável pelo controle de versões do seu código.
-
-### Windows
-
-Baixe e instale o **Git Bash**:  
-<https://git-scm.com/downloads>
-
-### Linux / macOS
-
-Verifique se o Git já está instalado:
-
-```bash
-git --version
-```
-
-> Caso não esteja, instale pelo gerenciador de pacotes do seu sistema.
-
-## Preparando o Ambiente
-
-Para desenvolver o desafio, você deverá criar uma cópia deste repositório no seu GitHub.
-
-### 1 - Fork do Repositório
-
-No canto superior direito desta página, clique em Fork
-
-<img width="219" height="45" alt="image" src="https://github.com/user-attachments/assets/5d629626-513a-445c-ba0f-e5bb3e225187" />
-
-Uma cópia do repositório será criada no seu perfil do GitHub
-
-> O Fork permite que você trabalhe de forma independente, sem alterar o repositório original do processo seletivo.
-
-### 2 - Clone do Repositório
-
-No repositório do seu Fork, clique em **<> Code**
-
-<img width="149" height="52" alt="image" src="https://github.com/user-attachments/assets/abbd331b-a005-4633-89c6-afd16acbe828" />
-
-Copie a URL e execute no terminal:
-
-```bash
-git clone https://github.com/SEU_USUARIO/nome-do-repositorio.git
-cd nome-do-repositorio
-```
-
-> O comando git clone cria uma cópia local do repositório para desenvolvimento.
-
-### 3 - Preparação do Ambiente de Execução
-
-Você pode executar o projeto de duas formas. Escolha apenas uma.
-
-#### Opção A – Ambiente Python Local
-
-**Requisitos:**
-
-- Python 3.10 ou 3.11
-- pip
-
-**Instale as dependências:**
-
-```bash
-pip install -r requirements.txt
-```
-
-#### Opção B – Dev Container (Recomendado)
-
-Este repositório inclui um Dev Container, garantindo um ambiente padronizado.
-
-**Requisitos:**
-
-- VS Code
-- Docker instalado
-- Extensão Dev Containers
-
-**Passos:**
-
-1. Abra o repositório no VS Code
-2. Clique em “Reopen in Container”
-3. Aguarde a criação automática do ambiente
-
-> Todas as dependências serão instaladas automaticamente.
-
-## Criando sua API Key do Wokwi
-
-A simulação do projeto será executada automaticamente via GitHub Actions, utilizando o Wokwi CLI.
-
-Para isso, você precisa gerar uma API Key.
-
-1. Acesse: <https://wokwi.com/dashboard/ci>
-2. Faça login (Google ou GitHub)
-3. Clique em Generate API Token
-4. Copie a chave gerada (exemplo: wokwi-xxxxxxxx)
-
-> Importante
-
-- Nunca faça commit dessa chave
-- Ela deve ser armazenada apenas como secret no GitHub
-
-## Configurando a API Key no GitHub (Secrets)
-
-**No repositório do seu Fork:**
-
-1. Vá em Settings
-2. Acesse Secrets and variables → Actions
-3. Clique em New repository secret
-4. Nome: WOKWI_API_KEY
-5. Valor: sua chave gerada
-6. Salve
-
-> As GitHub Actions do template já estão preparadas para usar essa variável automaticamente.
-
-## Desafio Técnico
-
-Você deverá desenvolver um projeto de sistemas embarcados simulados, utilizando Python e Wokwi.
-
-### Estrutura mínima esperada
-
-```text
-/project
- ├── src/
- │   └── main.py        # Código principal do projeto
- ├── wokwi.toml         # Configuração da simulação
- ├── diagram.json       # Circuito no Wokwi
- └── README.md          # Explicação do seu projeto
-```
-
-> Você pode expandir essa estrutura se desejar, desde que mantenha os arquivos essenciais.
-
-### Escolha do cenário
-
-No diretório "scenarios" existem arquivos .md e pastas referentes a diferentes desafios. Selecione apenas um deles e mantenha apenas a pasta e .md referente ao desafio a ser desenvolvido, deletando os demais. Isso fará com o que o fluxo de testes automáticos selecione o fluxo de acordo com o desafio escolhido.
-
-### Como Desenvolver seu Projeto
-
-O desenvolvimento acontece principalmente nos arquivos abaixo:
-
-#### src/main.py
-
-- Código Python executado na simulação
-- Implementa a lógica do sistema embarcado
-- Exemplos: controle de LEDs, leitura de sensores, estados, temporizações, etc.
-
-#### diagram.json
-
-- Define o hardware virtual do projeto
-- Componentes como:
-  - LEDs
-  - Botões
-  - Sensores
-  - Placa microcontroladora
-
-#### wokwi.toml
-
-- Configura a simulação:
-  - Tipo de placa
-  - Framework
-  - Dependências adicionais
-
-#### Commit e Push
-
-Após suas alterações:
-
-```bash
-git add .
-git commit -m "Descrição clara do que foi feito"
-git push
-```
-
-### Execução Automática (GitHub Actions)
-
-A cada push, o GitHub Actions irá automaticamente:
-
-- Executar o pipeline de build
-- Rodar a simulação via Wokwi CLI
-- Validar que o projeto executa sem erros
-
-### Caso algo falhe
-
-- Vá até a aba Actions
-- Analise os logs da execução
-- Corrija e envie novamente
-
-## Critérios de Avaliação
-
-Esta etapa será avaliada considerando:
-
-- Funcionamento correto da simulação
-- Código organizado e legível
-- Estrutura de arquivos correta
-- Uso adequado do Wokwi
-- Commits claros e bem descritos
-- Projeto executando sem falhas nas Actions
-
----
-
-## Submissão Final
-
-Após concluir o desenvolvimento:
-
-1. Verifique se o projeto **executa sem erros** nas GitHub Actions
-2. Confirme que todos os arquivos obrigatórios estão presentes
-3. Copie o link do **seu repositório no GitHub**
-
-Envie o link conforme as orientações do processo seletivo na plataforma do **PNAAT**.
-
----
-
-## Relatório do Candidato
-
-O arquivo **`README.md` do seu repositório** deve ser utilizado como o  
-**relatório final do desafio técnico**.
-
-Preencha todas as seções abaixo de forma **clara, objetiva e técnica**.
-
-> **Dica importante**  
-> Não é necessário um relatório extenso.  
-> O principal critério é demonstrar **clareza nas decisões técnicas**, organização e entendimento do sistema embarcado desenvolvido.
-> Não mantenha os demais conteúdos escritos nesse arquivo README, aqui devem ser concentradas apenas informações referentes ao projeto desenvolvido.
-
----
-
-### Identificação do Candidato
-
-- **Nome completo:**
-- **GitHub:**
-
----
-
-## Visão Geral da Solução
-
-Descreva, em poucas palavras:
-
-- Qual é o objetivo do seu projeto
-- O que o sistema embarcado simulado faz
-- Como o usuário interage com ele (se aplicável)
-
----
+A escolha pelo cenario LIGHT foi motivada pela simplicidade do hardware (apenas LDR + botao, sem necessidade de drivers de protocolo como I2C ou bit-bang) e pela clareza da maquina de estados, que cobre tres cenarios de validacao distintos (contagem, micro-parada e reset) sem sobreposicao de responsabilidades.
 
 ## Arquitetura do Sistema Embarcado
 
-Explique a arquitetura lógica do seu projeto, abordando:
+O firmware segue uma maquina de estados com tres estados principais, implementada na funcao `handle_ldr_transition()`:
 
-- Fluxo principal do programa (`main.py`)
-- Estrutura de estados, loops ou temporizações
-- Como os componentes interagem entre si
+1. **Livre (Clear):** Sensor LDR le alta luminosidade (ADC < 1500). Nenhum objeto obstruindo o feixe.
+2. **Bloqueado (Blocked):** Objeto interrompe o feixe (ADC > 1500). Um timer nao-bloqueante baseado em `time.ticks_diff()` inicia a contagem para deteccao de micro-parada.
+3. **Micro-parada:** Bloqueio continuo por 5+ segundos dispara alerta unico.
 
-Se desejar, utilize tópicos ou um pequeno diagrama em texto.
+A transicao de **Bloqueado -> Livre** (borda de subida da luminosidade) e o unico momento em que o contador e incrementado, garantindo que a peca passou completamente pelo sensor — e nao apenas entrou no feixe.
 
----
+O codigo esta organizado em tres funcoes com responsabilidades isoladas:
+- `read_ldr_state()`: leitura pura do ADC e comparacao com limiar
+- `handle_ldr_transition()`: maquina de estados completa do LDR
+- `handle_button()`: leitura do botao com debounce por software
 
-## Componentes Utilizados na Simulação
+Cada funcao opera sobre variaveis globais de estado, mantendo o loop principal enxuto (6 linhas) e facilitando manutencao e testes.
 
-Liste os principais componentes definidos no `diagram.json`, por exemplo:
+Fluxo principal:
 
-- Tipo de placa utilizada
-- LEDs, botões, sensores, atuadores, etc.
-- Função de cada componente no sistema
+```
+Inicializacao -> Loop (50ms):
+  ├─ read_ldr_state(): ADC.read() -> comparacao com limiar 1500
+  ├─ handle_ldr_transition(): maquina de estados (clear/blocked/micro-stop)
+  ├─ handle_button(): debounce + reset
+  └─ sleep(50ms)
+```
 
----
+## Componentes Utilizados na Simulacao
 
-## Decisões Técnicas Relevantes
+- **ESP32 DevKit C v4:** Microcontrolador principal. Escolhido por ser a plataforma padrao do processo seletivo e por oferecer ADC de 12 bits com atenuacao configuravel, necessario para leitura precisa do LDR.
+- **LDR (ldr1):** Sensor fotorresistor `wokwi-photoresistor-sensor` conectado ao GPIO34 (ADC1 canal 6). O pino AO fornece a tensao do divisor resistivo (10K fixo entre VCC e AO, LDR entre AO e GND). Alta luminosidade reduz a resistencia do LDR, diminuindo a tensao em AO e, consequentemente, o valor ADC.
+- **Botao (btn1):** Pushbutton `wokwi-pushbutton` no GPIO15 com pull-up interno. Configurado com `bounce: "0"` no diagram.json para comportamento deterministico nos testes CI, com debounce complementar por software.
+- **Serial Monitor (UART):** Interface de saida para logs e telemetria, unica forma de saida disponivel no ambiente de CI do Wokwi.
 
-Explique brevemente decisões importantes tomadas durante o desenvolvimento, como:
+## Decisoes Tecnicas Relevantes
 
-- Organização do código
-- Uso de funções, estados ou constantes
-- Estratégias para temporização ou controle lógico
+### Leitura analogica (AO) em vez de saida digital (DO)
 
----
+O modulo LDR possui um pino DO que comuta em um threshold fixo de tensao (~2.5V, equivalente a ~100 lux com os parametros padrao). Esse threshold fixo nao oferece margem segura para distinguir os cenarios do teste: 50 lux (objeto bloqueando) e 800 lux (esteira livre). Ambos estariam do mesmo lado do threshold fixo se a referencia fosse ligeiramente deslocada. A leitura direta do pino AO via ADC permite definir um limiar personalizado (1500) com ampla margem de seguranca em ambas as direcoes.
+
+### Escolha do GPIO34 para o LDR
+
+O GPIO34 pertence ao ADC1 e e um pino exclusivamente de entrada (input-only) no ESP32. Isso elimina o risco de configura-lo acidentalmente como saida e causar curto-circuito no divisor resistivo — uma protecao adicional relevante em ambiente embarcado. Alem disso, o ADC1 e independente do ADC2, que pode sofrer interferencia do Wi-Fi (embora nao utilizado neste projeto, e uma boa pratica reserva-lo).
+
+### Atenuacao ADC.ATTN_11DB
+
+A atenuacao de 11dB amplia o range de leitura do ADC para aproximadamente 0-3.6V. Com VCC de 3.3V no ESP32, o divisor resistivo do LDR produz tensoes entre ~0.4V (500 lux) e ~2.0V (50 lux). Sem atenuacao (ATTN_0DB, range 0-1.1V), os valores acima de 1.1V seriam saturados, impossibilitando a leitura correta do estado de bloqueio (50 lux produz ~2.04V).
+
+### Threshold ADC de 1500
+
+O valor foi calculado com base na formula de resistencia do LDR fornecida pelo Wokwi: R = rl10 * (10/lux)^gamma, com rl10=50k e gamma=0.7.
+
+- **50 lux (bloqueado):** R ≈ 16.2k, V_AO = 3.3 * 16200/(16200+10000) ≈ 2.04V, ADC ≈ 2321
+- **800 lux (livre):** R ≈ 2.25k, V_AO = 3.3 * 2250/(2250+10000) ≈ 0.61V, ADC ≈ 690
+
+O threshold de 1500 situa-se exatamente no ponto medio, com margem de 810 pontos ADC (≈27% da faixa) para cada lado — robusto mesmo com variacao de componentes ou ruido.
+
+### Timer com `time.ticks_diff()` em vez de `time.time()` ou `time.sleep()`
+
+`time.ticks_ms()` retorna um contador de milissegundos de 32 bits que wrappa a cada ~12 horas. A funcao `ticks_diff()` trata esse wrap-around automaticamente usando aritmetica modular, tornando a medicao de intervalos imune a overflow — essencial para um sistema embarcado que pode operar por turnos prolongados. `time.sleep()` foi evitado para temporizacao porque e bloqueante e impediria a leitura simultanea do botao durante a espera.
+
+### Debounce por software com `ticks_diff()`
+
+Embora o botao no diagram.json tenha bounce desabilitado (`"bounce": "0"`), o debounce por software foi mantido como camada adicional de seguranca, alinhado ao requisito do LIGHT.md ("a leitura do botao btn1 deve conter um tratamento de debounce"). A implementacao usa o mesmo `ticks_diff()` do timer de micro-parada, mantendo consistencia no codigo e exigindo apenas 50ms de estabilidade para aceitar uma transicao — valor padrao para pushbuttons mecanicos (tipicamente 10-50ms).
+
+### Separacao em funcoes com responsabilidade unica
+
+O codigo foi organizado em tres funcoes (`read_ldr_state`, `handle_ldr_transition`, `handle_button`) que encapsulam comportamentos independentes. Isso permite testar mentalmente cada modulo isoladamente: a leitura do sensor, a maquina de estados e o tratamento do botao sao completamente desacoplados. O loop principal fica reduzido a 6 linhas, facilitando a compreensao do fluxo geral e futuras manutencoes.
 
 ## Resultados Obtidos
 
-Descreva o comportamento final do sistema:
+O sistema atende todos os requisitos do cenario LIGHT:
 
-- O que funciona corretamente
-- Quais requisitos foram atendidos
-- Resultado observado na simulação do Wokwi
+1. **Contagem de pecas (test_1):** Detecta corretamente a borda de subida da luminosidade (50->800 lux) e incrementa o contador. A contagem so ocorre na saida do objeto, nunca na entrada, eliminando falsos positivos por trepidacao.
+2. **Micro-parada (test_2):** Identifica bloqueio continuo superior a 5 segundos e emite alerta unico. O flag `micro_stop_alerted` impede disparos repetidos, mantendo o log serial limpo.
+3. **Reset de turno (test_3):** Responde ao acionamento do botao com debounce de 50ms, zerando contador, estado de bloqueio e flag de micro-parada em uma unica operacao atomica.
 
----
+Alem dos cenarios de teste, o codigo trata edge cases como:
+- Wrap-around do contador de `ticks_ms()` (tratado por `ticks_diff`)
+- Bouncing de botao (filtrado pelo debounce)
+- Transicoes espurias do LDR (so bordas de subida incrementam)
+- Bloqueio inicial ao ligar (timer so inicia apos confirmacao de estado)
 
-## Comentários Adicionais (Opcional)
+## Comentarios Adicionais (Opcional)
 
-Utilize este espaço para comentar, se desejar:
+O principal desafio foi adaptar a tabela de referencia do Wokwi (calculada para VCC=5V) para a tensao de operacao de 3.3V do ESP32, recalibrando os valores ADC esperados para cada nivel de lux. O calculo foi validado com a formula de resistencia do LDR fornecida na documentacao oficial do componente.
 
-- Dificuldades encontradas
-- Limitações da solução
-- Melhorias que você faria com mais tempo
-- Principais aprendizados durante o desafio
-
----
-
-> Este relatório faz parte da avaliação técnica.  
-> Clareza, objetividade e organização são tão importantes quanto o funcionamento do código.
-
----
-
-## Especificação dos Testes Automatizados (Wokwi CI)
-
-Para que o projeto seja validado com sucesso na esteira de integração contínua (CI), o firmware escrito em MicroPython deve interagir corretamente com as leituras dos sensores descritos em cada cenário e enviar as mensagens de status exatas.
-
-### Requisitos Críticos de Implementação
-
-1. **Casamento Exato de Strings:** O Wokwi CI faz uma verificação estrita caractere por caractere. Se houver divergência em maiúsculas/minúsculas, acentuação ou falta de pontuação, o teste irá falhar.
-2. **Arquitetura Não-Bloqueante:** Evite o uso de funções bloqueantes. Elas podem fazer com que o firmware perca a janela de tempo em que o simulador altera o peso, quebrando a sincronia do teste automatizado.
-
----
-
-## Suporte
-
-Em caso de dúvidas:
-
-- Consulte o material dos cursos EAD
-- Leia atentamente este README
-- Analise os logs das GitHub Actions
-- Utilize os canais oficiais para contato com os instrutores
+Com mais tempo, seria interessante adicionar:
+- Display OLED para visualizacao local do contador e status
+- Calculo de pecas por minuto (PPM) para metricas de produtividade em tempo real
+- Interface Wi-Fi para envio de telemetria a um dashboard remoto
+- Memoria nao-volatil (NVS) para preservar o contador entre reinicializacoes
