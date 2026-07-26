@@ -11,9 +11,9 @@
     ["esp:TX", "$serialMonitor:RX", "", []],
     ["esp:RX", "$serialMonitor:TX", "", []],
     ["ldr1:VCC", "esp:3V3", "red", []],
-    ["ldr1:GND", "esp:GND", "black", []],
+    ["ldr1:GND", "esp:GND.1", "black", []],
     ["ldr1:AO", "esp:34", "green", []],
     ["btn1:1.l", "esp:15", "blue", []],
-    ["btn1:2.l", "esp:GND", "black", []]
+    ["btn1:2.l", "esp:GND.1", "black", []]
   ]
 }
