@@ -74,7 +74,7 @@ def handle_button(now):
     if btn_raw != last_btn_state:
         if time.ticks_diff(now, last_btn_change_ms) > DEBOUNCE_MS:
             last_btn_state = btn_raw
-            if btn_raw == 0:
+            if btn_raw == 1:
                 count = 0
                 blocked = False
                 micro_stop_alerted = False
